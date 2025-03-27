@@ -14,13 +14,183 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #171717;
     --foreground: #ededed;
   }
+}
+
+/* Smooth Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: scroll;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.landing-page-top {
+  position: relative;
+  width: 100%;
+}
+
+.landing-page-banner {
+  position: relative;
+  background: #FFC6B5;
+  border: 2px #fdc0ae solid;
+  height: 50vh;
+  margin: 10px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: #171717;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.landing-page-banner-paragraph {
+  position: absolute;
+  top: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  color: #b30000; /* Deep Blood Red */
+  padding: 1rem;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Main Heading (Stronger 3D Effect) */
+.landing-page-banner-paragraph h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  color: #8B0000; /* Darker Red for Depth */
+}
+
+/* Subheading (Softer 3D Effect) */
+.landing-page-banner-paragraph h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #cc0000;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Paragraph Styling */
+.landing-page-banner-paragraph p {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  color: #550000; /* Dark Blood Red */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.landing-page-logo {
+  position: absolute;
+  top: 0.50rem;
+  left: 1rem;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.landing-page-blood-bag {
+  position: absolute;
+  top: 0;
+  right: 0.60rem;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.landing-page-action-buttons-section {
+  position: absolute;
+  bottom: -4rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.landing-page-action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.landing-page-action-buttons div {
+  background: #DD2326;
+  color: #ededed;
+  width: 20rem;
+  height: 8rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.landing-page-action-buttons button:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.landing-page-learning-about-donation {
+  border: 2px #fdc0ae solid;
+  height: 50vh;
+  margin: 5rem 10px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.landing-page-learning-contact {
+  border: 2px #fdc0ae solid;
+  height: 50vh;
+  margin: 5rem 10px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-page-learning-footer {
+  border: 2px #fdc0ae solid;
+  height: 25vh;
+  margin: 0 10px 2rem 10px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
