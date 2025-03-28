@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 
 export default function Home() {
   const [currentVideo, setCurrentVideo] = useState(1);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -16,6 +16,10 @@ export default function Home() {
     if (videoElement) {
       videoElement.addEventListener('ended', handleVideoEnd);
       videoElement.setAttribute('preload', 'auto');
+      // Ensure the video plays
+      videoElement.play().catch(error => {
+        console.error("Video play failed:", error);
+      });
     }
 
     return () => {
@@ -55,7 +59,7 @@ export default function Home() {
         </div>
 
         <div className="landing-page-logo">
-          <Image src="../logo.svg" alt="HHP Logo" width={150} height={50} />
+          <Image src="/logo.svg" alt="HHP Logo" width={150} height={50} />
         </div>
 
         <div className="landing-page-action-buttons-section">
