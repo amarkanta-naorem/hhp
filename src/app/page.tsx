@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 
 export default function Home() {
   const [currentVideo, setCurrentVideo] = useState(1);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -13,17 +13,20 @@ export default function Home() {
       setCurrentVideo((prev) => (prev % 9) + 1);
     };
 
-    if (videoElement) {
+    if (videoElement instanceof HTMLVideoElement) {
       videoElement.addEventListener('ended', handleVideoEnd);
       videoElement.setAttribute('preload', 'auto');
-      // Ensure the video plays
-      videoElement.play().catch(error => {
-        console.error("Video play failed:", error);
-      });
+      
+      const playPromise = videoElement.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error("Autoplay prevented:", error);
+        });
+      }
     }
 
     return () => {
-      if (videoElement) {
+      if (videoElement instanceof HTMLVideoElement) {
         videoElement.removeEventListener('ended', handleVideoEnd);
       }
     };
