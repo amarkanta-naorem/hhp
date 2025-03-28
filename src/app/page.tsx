@@ -84,16 +84,19 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 h-full flex flex-col justify-between p-8 text-white">
-          <div className="flex justify-between items-start">
-            <Image 
-              src="/logo.svg" 
-              alt="HHP Logo" 
-              width={150} 
-              height={50}
-              priority
-              className="w-32 md:w-40"
-            />
-          </div>
+        <div className="flex justify-between items-start">
+          <Image 
+            src="/logo.svg" 
+            alt="HHP Logo" 
+            width={160}
+            height={53}
+            priority
+            className="w-40"
+            style={{
+              height: 'auto'
+            }}
+          />
+        </div>
 
           <div className="max-w-[55rem] mx-auto text-center space-y-6">
             <h3 className="text-xl md:text-2xl font-medium">Donate Blood🩸 Save Lives❤️</h3>
