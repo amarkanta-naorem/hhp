@@ -139,6 +139,7 @@ export default function Home() {
         <footer className="bg-gray-900 text-white py-12 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+              
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-center md:text-left">
                   Contact Us
@@ -192,7 +193,7 @@ export default function Home() {
                   ].map((item, index) => (
                     <li
                       key={index}
-                      className="flex items-center gap-3 md:justify-start justify-center"
+                      className="flex items-center gap-3 justify-center md:justify-start"
                     >
                       <svg
                         className="w-5 h-5 flex-shrink-0"
@@ -204,7 +205,7 @@ export default function Home() {
                       </svg>
                       <a
                         href={item.href}
-                        className="hover:text-red-400 transition-colors"
+                        className="hover:text-red-400 transition-colors text-center md:text-left"
                       >
                         {item.text}
                       </a>
@@ -217,16 +218,16 @@ export default function Home() {
                 <h3 className="text-lg font-semibold text-center">
                   Quick Links
                 </h3>
-                <ul className="space-y-3 text-center">
+                <ul className="space-y-3">
                   {[
                     { name: "Home", path: "/" },
-                    { name: "Donate Blood", path: "/" },
-                    { name: "Request Blood", path: "/" },
+                    { name: "Donate Blood", path: "/donate" },
+                    { name: "Request Blood", path: "/request" },
                   ].map((link) => (
-                    <li key={link.name}>
+                    <li key={link.name} className="text-center">
                       <a
                         href={link.path}
-                        className="hover:text-red-400 transition-colors flex items-center justify-center gap-2"
+                        className="hover:text-red-400 transition-colors inline-flex items-center gap-2"
                       >
                         <span>{link.name}</span>
                       </a>
@@ -236,11 +237,10 @@ export default function Home() {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-right">
+                <h3 className="text-lg font-semibold text-center md:text-right">
                   Join the Community
                 </h3>
-
-                <div className="flex justify-end gap-5">
+                <div className="flex justify-center md:justify-end gap-5">
                   <a
                     href="https://www.facebook.com/groups/251400595265833"
                     aria-label="Facebook"
