@@ -1,5 +1,6 @@
 'use client';
 import Image from "next/image";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { useEffect, useState, useRef } from "react";
 
 export default function Home() {
@@ -50,6 +51,7 @@ export default function Home() {
   }, [currentVideo]);
 
   return (
+    <>
     <div className="min-h-screen flex flex-col">
       <section className="relative w-full h-screen overflow-hidden">
         <div className="absolute inset-0">
@@ -139,5 +141,7 @@ export default function Home() {
         </div>
       </footer>
     </div>
+    <SpeedInsights />
+    </>
   );
 }
