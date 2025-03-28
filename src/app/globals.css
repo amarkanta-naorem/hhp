@@ -1,4 +1,5 @@
 @import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400&display=swap'); */
 
 :root {
   --background: #ffffff;
@@ -19,7 +20,6 @@
   }
 }
 
-/* Smooth Fade-in Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -54,61 +54,70 @@ body {
 
 .landing-page-banner {
   position: relative;
-  background: #FFC6B5;
   border: 2px #fdc0ae solid;
   height: 50vh;
   margin: 10px;
   border-radius: 10px;
-
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   color: #171717;
   animation: fadeIn 1.5s ease-in-out;
 }
 
+.landing-page-banner video {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
 .landing-page-banner-paragraph {
   position: absolute;
-  top: 30%;
+  top: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
   text-align: center;
-  color: #b30000; /* Deep Blood Red */
-  padding: 1rem;
+  padding: 1.5rem;
   animation: fadeIn 1.5s ease-in-out;
 }
 
-/* Main Heading (Stronger 3D Effect) */
-.landing-page-banner-paragraph h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-  color: #8B0000; /* Darker Red for Depth */
-}
-
-/* Subheading (Softer 3D Effect) */
 .landing-page-banner-paragraph h3 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
   color: #cc0000;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
 }
 
-/* Paragraph Styling */
-.landing-page-banner-paragraph p {
-  font-size: 1.1rem;
-  margin-top: 0.5rem;
-  font-weight: 500;
-  color: #550000; /* Dark Blood Red */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+.landing-page-banner-paragraph h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 2.75rem;
+  color: #8B0000;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
 }
 
+.landing-page-banner-paragraph .banner-description {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  max-width: 1000px;
+  line-height: 1.5;
+}
+
+/* Rest of your existing CSS remains unchanged */
 .landing-page-logo {
   position: absolute;
   top: 0.50rem;
@@ -155,7 +164,7 @@ body {
   animation: fadeIn 1.5s ease-in-out;
 }
 
-.landing-page-action-buttons button:hover {
+.landing-page-action-buttons div:hover {
   background: #333;
   transform: translateY(-2px);
 }
@@ -165,11 +174,9 @@ body {
   height: 50vh;
   margin: 5rem 10px;
   border-radius: 10px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-  
   animation: fadeIn 1.5s ease-in-out;
 }
 
@@ -178,7 +185,6 @@ body {
   height: 50vh;
   margin: 5rem 10px;
   border-radius: 10px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -189,7 +195,6 @@ body {
   height: 25vh;
   margin: 0 10px 2rem 10px;
   border-radius: 10px;
-
   display: flex;
   align-items: center;
   justify-content: center;
