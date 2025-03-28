@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 
 export default function Home() {
   const [currentVideo, setCurrentVideo] = useState(1);
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -48,7 +48,7 @@ export default function Home() {
 
         <div className="landing-page-banner-paragraph">
           <h3>Donate Blood🩸, Save Lives❤️</h3>
-          <h2>Be Someone’s Lifeline Today!</h2>
+          <h2>Be Someone's Lifeline Today!</h2>
           <span className="banner-description">
             A single donation can save multiple lives. Take a step, make an impact, and give the gift of life!
           </span>
@@ -57,14 +57,6 @@ export default function Home() {
         <div className="landing-page-logo">
           <Image src="../logo.svg" alt="HHP Logo" width={150} height={50} />
         </div>
-        {/* <div className="landing-page-blood-bag">
-          <Image
-            src="../blood-bag.svg"
-            alt="HHP Logo"
-            width={300}
-            height={50}
-          />
-        </div> */}
 
         <div className="landing-page-action-buttons-section">
           <div className="landing-page-action-buttons">
