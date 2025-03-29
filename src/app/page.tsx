@@ -364,7 +364,7 @@ export default function Home() {
         <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fadeIn">
           <div
             ref={modalRef}
-            className="bg-white/95 backdrop-blur-lg rounded-2xl mt-2 shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-white/20 transform transition-all duration-300 ease-out animate-slideUp [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+            className="bg-white/95 backdrop-blur-lg rounded-2xl mt-5 shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-white/20 transform transition-all duration-300 ease-out animate-slideUp [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
           >
             {!submitSuccess && (
               <div className="relative p-8 pb-0">
