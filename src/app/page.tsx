@@ -122,7 +122,7 @@ export default function Home() {
           urgency: "normal",
           message: "",
         });
-      }, 55000);
+      }, 5000);
     }, 1000);
   };
 
@@ -630,7 +630,7 @@ export default function Home() {
                                 className="sr-only"
                                 required
                               />
-                              <span className="font-medium">{item.label}</span>
+                              <span className="font-medium md:text-[16px] text-xs">{item.label}</span>
                               <span className="text-xs mt-1">{item.time}</span>
                             </label>
                           ))}
