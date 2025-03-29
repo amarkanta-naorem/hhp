@@ -6,7 +6,21 @@ import { useEffect, useState, useRef } from "react";
 export default function Home() {
   const [currentVideo, setCurrentVideo] = useState(1);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [showBloodHelpModal, setShowBloodHelpModal] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    bloodType: "",
+    unitsNeeded: "1",
+    hospital: "",
+    urgency: "normal",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const totalVideos = 9;
 
   useEffect(() => {
@@ -52,6 +66,65 @@ export default function Home() {
       videoElement.removeEventListener("error", handleError);
     };
   }, [currentVideo]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        setShowBloodHelpModal(false);
+      }
+    };
+
+    if (showBloodHelpModal) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showBloodHelpModal]);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate API call
+    setTimeout(() => {
+      console.log("Form submitted:", formData);
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setSubmitSuccess(false);
+        setShowBloodHelpModal(false);
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          bloodType: "",
+          unitsNeeded: "1",
+          hospital: "",
+          urgency: "normal",
+          message: "",
+        });
+      }, 55000);
+    }, 1000);
+  };
 
   return (
     <>
@@ -117,9 +190,7 @@ export default function Home() {
                 Become a Donor
               </button>
               <button
-                onClick={() =>
-                  alert("This feature is currently under development")
-                }
+                onClick={() => setShowBloodHelpModal(true)}
                 className="bg-white hover:bg-gray-100 text-red-600 px-6 py-3 rounded-full font-medium transition-colors cursor-pointer"
               >
                 Get Blood Help
@@ -139,7 +210,6 @@ export default function Home() {
         <footer className="bg-gray-900 text-white py-12 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-              
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-center md:text-left">
                   Contact Us
@@ -289,6 +359,390 @@ export default function Home() {
           </div>
         </footer>
       </div>
+
+      {showBloodHelpModal && (
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fadeIn">
+          <div
+            ref={modalRef}
+            className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-white/20 transform transition-all duration-300 ease-out animate-slideUp [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+          >
+            {!submitSuccess && (
+              <div className="relative p-8 pb-0">
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-red-500 to-red-600 rounded-t-2xl"></div>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <div className="flex items-center mb-2">
+                      <div className="bg-red-100/80 p-2 rounded-lg mr-3">
+                        <svg
+                          className="w-6 h-6 text-red-600"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"
+                          />
+                        </svg>
+                      </div>
+                      <h2 className="text-3xl font-bold text-gray-900">
+                        Blood Request Form
+                      </h2>
+                    </div>
+                    <p className="text-gray-700 ml-14">
+                      Please fill all required fields
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setShowBloodHelpModal(false)}
+                    className="text-gray-500 hover:text-gray-700 transition-colors p-2 rounded-full hover:bg-gray-100/50"
+                  >
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {submitSuccess ? (
+              <div className="text-center p-12">
+                <div className="mx-auto flex items-center justify-center h-24 w-24 rounded-full bg-blue-50 mb-6">
+                  <div className="relative">
+                    <svg
+                      width="96"
+                      height="96"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M16 8.375C16 8.93437 15.8656 9.45312 15.5969 9.92813C15.3281 10.4031 14.9688 10.775 14.5156 11.0344C14.5281 11.1188 14.5344 11.25 14.5344 11.4281C14.5344 12.275 14.25 12.9937 13.6875 13.5875C13.1219 14.1844 12.4406 14.4812 11.6438 14.4812C11.2875 14.4812 10.9469 14.4156 10.625 14.2844C10.375 14.7969 10.0156 15.2094 9.54375 15.525C9.075 15.8438 8.55937 16 8 16C7.42812 16 6.90938 15.8469 6.44688 15.5344C5.98125 15.225 5.625 14.8094 5.375 14.2844C5.05312 14.4156 4.71562 14.4812 4.35625 14.4812C3.55937 14.4812 2.875 14.1844 2.30312 13.5875C1.73125 12.9937 1.44687 12.2719 1.44687 11.4281C1.44687 11.3344 1.45938 11.2031 1.48125 11.0344C1.02813 10.7719 0.66875 10.4031 0.4 9.92813C0.134375 9.45312 0 8.93437 0 8.375C0 7.78125 0.15 7.23438 0.446875 6.74062C0.74375 6.24687 1.14375 5.88125 1.64375 5.64375C1.5125 5.2875 1.44687 4.92812 1.44687 4.57188C1.44687 3.72813 1.73125 3.00625 2.30312 2.4125C2.875 1.81875 3.55937 1.51875 4.35625 1.51875C4.7125 1.51875 5.05312 1.58438 5.375 1.71563C5.625 1.20312 5.98438 0.790625 6.45625 0.475C6.925 0.159375 7.44063 0 8 0C8.55937 0 9.075 0.159375 9.54375 0.471875C10.0125 0.7875 10.375 1.2 10.625 1.7125C10.9469 1.58125 11.2844 1.51562 11.6438 1.51562C12.4406 1.51562 13.1219 1.8125 13.6875 2.40937C14.2531 3.00625 14.5344 3.725 14.5344 4.56875C14.5344 4.9625 14.475 5.31875 14.3562 5.64062C14.8562 5.87813 15.2563 6.24375 15.5531 6.7375C15.85 7.23438 16 7.78125 16 8.375ZM7.65938 10.7844L10.9625 5.8375C11.0469 5.70625 11.0719 5.5625 11.0437 5.40938C11.0125 5.25625 10.9344 5.13438 10.8031 5.05312C10.6719 4.96875 10.5281 4.94063 10.375 4.9625C10.2188 4.9875 10.0938 5.0625 10 5.19375L7.09062 9.56875L5.75 8.23125C5.63125 8.1125 5.49375 8.05625 5.34062 8.0625C5.18437 8.06875 5.05 8.125 4.93125 8.23125C4.825 8.3375 4.77187 8.47187 4.77187 8.63437C4.77187 8.79375 4.825 8.92813 4.93125 9.0375L6.77187 10.8781L6.8625 10.95C6.96875 11.0219 7.07812 11.0562 7.18437 11.0562C7.39375 11.0531 7.55313 10.9656 7.65938 10.7844Z"
+                        fill="#3897F0"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  Request Submitted!
+                </h3>
+                <p className="text-gray-700 max-w-md mx-auto mb-8">
+                  Our team will contact you shortly to coordinate the blood
+                  donation.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="p-8 pt-6">
+                <div className="space-y-4">
+                  <div className="bg-gray-50/50 p-6 rounded-xl border border-gray-300 shadow-sm">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                      <span className="flex items-center justify-center w-6 h-6 bg-red-100 text-red-600 rounded-full mr-2 text-sm">
+                        1
+                      </span>
+                      Personal Information
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {/* Name Field */}
+                      <div className="space-y-2">
+                        <label
+                          htmlFor="name"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Full Name <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-0 focus:ring-red-500 focus:border-red-500 outline-none transition-all"
+                          placeholder="Patient's full name"
+                        />
+                      </div>
+
+                      {/* Phone Field */}
+                      <div className="space-y-2">
+                        <label
+                          htmlFor="phone"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Phone Number <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-0 focus:ring-red-500 focus:border-red-500 outline-none transition-all"
+                          placeholder="Active contact number"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Blood Requirements Section */}
+                  <div className="bg-gray-50/50 p-6 rounded-xl border border-gray-300 shadow-sm">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                      <span className="flex items-center justify-center w-6 h-6 bg-red-100 text-red-600 rounded-full mr-2 text-sm">
+                        2
+                      </span>
+                      Blood Requirements
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {/* Blood Type Field */}
+                      <div className="space-y-2">
+                        <label
+                          htmlFor="bloodType"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Blood Type <span className="text-red-500">*</span>
+                        </label>
+                        <select
+                          id="bloodType"
+                          name="bloodType"
+                          value={formData.bloodType}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-0 focus:ring-red-500 focus:border-red-500 outline-none transition-all"
+                        >
+                          <option value="" className="text-gray-500">
+                            Select blood type
+                          </option>
+                          <option value="A+" className="text-gray-900">
+                            A+
+                          </option>
+                          <option value="A-" className="text-gray-900">
+                            A-
+                          </option>
+                          <option value="B+" className="text-gray-900">
+                            B+
+                          </option>
+                          <option value="B-" className="text-gray-900">
+                            B-
+                          </option>
+                          <option value="AB+" className="text-gray-900">
+                            AB+
+                          </option>
+                          <option value="AB-" className="text-gray-900">
+                            AB-
+                          </option>
+                          <option value="O+" className="text-gray-900">
+                            O+
+                          </option>
+                          <option value="O-" className="text-gray-900">
+                            O-
+                          </option>
+                        </select>
+                      </div>
+
+                      {/* Units Needed Field */}
+                      <div className="space-y-2">
+                        <label
+                          htmlFor="unitsNeeded"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Units Required <span className="text-red-500">*</span>
+                        </label>
+                        <select
+                          id="unitsNeeded"
+                          name="unitsNeeded"
+                          value={formData.unitsNeeded}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-0 focus:ring-red-500 focus:border-red-500 outline-none transition-all"
+                        >
+                          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                            <option
+                              key={num}
+                              value={num.toString()}
+                              className="text-gray-900"
+                            >
+                              {num} unit{num !== 1 ? "s" : ""}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Emergency Details Section */}
+                  <div className="bg-gray-50/50 p-6 rounded-xl border border-gray-300 shadow-sm">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                      <span className="flex items-center justify-center w-6 h-6 bg-red-100 text-red-600 rounded-full mr-2 text-sm">
+                        3
+                      </span>
+                      Emergency Details
+                    </h3>
+                    <div className="space-y-6">
+                      {/* Urgency Field */}
+                      <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700">
+                          Urgency Level <span className="text-red-500">*</span>
+                        </label>
+                        <div className="grid grid-cols-3 gap-3">
+                          {[
+                            {
+                              value: "normal",
+                              label: "Standard",
+                              time: "48 hours",
+                            },
+                            {
+                              value: "urgent",
+                              label: "Critical",
+                              time: "24 hours",
+                            },
+                            {
+                              value: "emergency",
+                              label: "Emergency",
+                              time: "Immediate",
+                            },
+                          ].map((item) => (
+                            <label
+                              key={item.value}
+                              className={`flex flex-col items-center p-3 border rounded-lg cursor-pointer transition-all ${
+                                formData.urgency === item.value
+                                  ? "border-red-500 bg-red-50 text-red-600"
+                                  : "border-gray-300 hover:border-gray-400 text-gray-700"
+                              }`}
+                            >
+                              <input
+                                type="radio"
+                                name="urgency"
+                                value={item.value}
+                                checked={formData.urgency === item.value}
+                                onChange={handleInputChange}
+                                className="sr-only"
+                                required
+                              />
+                              <span className="font-medium">{item.label}</span>
+                              <span className="text-xs mt-1">{item.time}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Hospital Field */}
+                      <div className="space-y-2">
+                        <label
+                          htmlFor="hospital"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Hospital Name <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          id="hospital"
+                          name="hospital"
+                          value={formData.hospital}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-0 focus:ring-red-500 focus:border-red-500 outline-none transition-all"
+                          placeholder="Where is the patient?"
+                        />
+                      </div>
+
+                      {/* Message Field */}
+                      <div className="space-y-2">
+                        <label
+                          htmlFor="message"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Additional Information
+                        </label>
+                        <textarea
+                          id="message"
+                          name="message"
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          rows={4}
+                          className="w-full px-4 py-3 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-0 focus:ring-red-500 focus:border-red-500 outline-none transition-all"
+                          placeholder="Patient condition, special requirements..."
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Form Footer */}
+                <div className="mt-8 flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-4">
+                  <button
+                    type="button"
+                    onClick={() => setShowBloodHelpModal(false)}
+                    className="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-red-500 transition-all font-medium"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed transition-all font-medium flex items-center justify-center"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <svg
+                          className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        <svg
+                          className="-ml-1 mr-2 h-5 w-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"
+                          />
+                        </svg>
+                        Submit request
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
+
       <SpeedInsights />
     </>
   );
