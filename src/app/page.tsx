@@ -152,7 +152,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           </div>
 
-          <div className="relative z-10 h-full flex flex-col justify-between p-8 text-white">
+          <div className="relative z-10 h-full flex flex-col justify-around p-8 text-white">
             <div className="flex justify-between items-start">
               <Image
                 src="/logo.svg"
