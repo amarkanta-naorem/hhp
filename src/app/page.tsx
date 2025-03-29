@@ -102,13 +102,11 @@ export default function Home() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
     setTimeout(() => {
       console.log("Form submitted:", formData);
       setIsSubmitting(false);
       setSubmitSuccess(true);
 
-      // Reset form after 3 seconds
       setTimeout(() => {
         setSubmitSuccess(false);
         setShowBloodHelpModal(false);
