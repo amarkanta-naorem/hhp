@@ -300,7 +300,7 @@ export default function RequestBloodPage() {
             </span>
             <span>Select Rows</span>
           </button>
-          <span className="text-[#bdbdbd] cursor-none">/</span>
+          <span className="text-[#bdbdbd] cursor-default">/</span>
           <button className="flex items-center space-x-2 border-none p-1 rounded-md text-sm cursor-pointer">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 16 16" >
@@ -309,7 +309,7 @@ export default function RequestBloodPage() {
             </span>
             <span>View</span>
           </button>
-          <span className="text-[#bdbdbd] cursor-none">/</span>
+          <span className="text-[#bdbdbd] cursor-default">/</span>
           <button className="flex items-center space-x-2 border-none p-1 rounded-md text-sm cursor-pointer">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24">
