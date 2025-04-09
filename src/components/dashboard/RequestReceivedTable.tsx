@@ -99,7 +99,7 @@ export default function RequestReceivedTable ({patients}: any) {
                         </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200/40 bg-white/50">
-                        {patients.map((patient, index) => (
+                        {patients.map((patient:any, index:any) => (
                             <tr key={index} className="group hover:bg-white/90 transition-all duration-200 ease-out">
                                 <td className="px-2 py-4 whitespace-nowrap">
                                     <div className="text-sm font-medium text-gray-900">{patient.patient_name}</div>
