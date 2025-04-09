@@ -271,8 +271,8 @@ export default function RequestBloodPage() {
   };
 
   return (
-    <div className="bg-white border border-gray-200 shadow-xs rounded-md p-5 m-5 h-[85vh]">
-      <div className="flex items-center justify-between">
+    <div className="bg-white border border-gray-200 shadow-xs rounded-md  m-5 h-[85vh]">
+      <div className="flex items-center justify-between px-5 pt-5">
         <h1 className="text-lg font-bold text-gray-800">Request Received</h1>
 
         <div className="relative">
@@ -281,7 +281,7 @@ export default function RequestBloodPage() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between my-5">
+      <div className="flex items-center justify-between p-5">
         <button className="flex items-center space-x-2 bg- p-1 px-2 w-auto rounded-md text-white bg-[#c90606] text-xs cursor-pointer">
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" width={17} height={17} viewBox="0 0 24 24" >
