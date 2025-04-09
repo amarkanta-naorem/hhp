@@ -56,14 +56,14 @@ export default function RequestReceivedTable ({patients}: any) {
                         </span>
                         <span>Select Rows</span>
                     </button>
-                    <span className="text-[#bdbdbd] cursor-none">/</span>
+                    <span className="text-[#bdbdbd] cursor-default">/</span>
                     <button className="flex items-center space-x-2 border-none p-1 rounded-md text-sm cursor-pointer">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 16 16"><path fill="currentColor" d="M6 1a3 3 0 0 0-2.83 2H0v2h3.17a3.001 3.001 0 0 0 5.66 0H16V3H8.83A3 3 0 0 0 6 1M5 4a1 1 0 1 1 2 0a1 1 0 0 1-2 0m5 5a3 3 0 0 0-2.83 2H0v2h7.17a3.001 3.001 0 0 0 5.66 0H16v-2h-3.17A3 3 0 0 0 10 9m-1 3a1 1 0 1 1 2 0a1 1 0 0 1-2 0"></path></svg>
                         </span>
                         <span>View</span>
                     </button>
-                    <span className="text-[#bdbdbd] cursor-none">/</span>
+                    <span className="text-[#bdbdbd] cursor-default">/</span>
                     <button className="flex items-center space-x-2 border-none p-1 rounded-md text-sm cursor-pointer">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24"><path fill="currentColor" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"></path></svg>
