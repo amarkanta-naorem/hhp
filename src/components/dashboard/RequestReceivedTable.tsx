@@ -85,7 +85,7 @@ export default function RequestReceivedTable ({patients}: any) {
                                 Phone No.
                             </th>
                             <th className="p-4 text-left text-xs tracking-wide font-light">
-                                Blood Group
+                                Blood Gp.
                             </th>
                             <th className="p-4 text-left text-xs tracking-wide font-light">
                                 Age
