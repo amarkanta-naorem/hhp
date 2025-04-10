@@ -78,24 +78,12 @@ export default function RequestReceivedTable ({patients}: any) {
                     <table className="w-full divide-y divide-gray-200/70">
                         <thead className="sticky top-0 bg-white z-10">
                         <tr>
-                            <th className="p-4 text-left text-xs tracking-wide font-light">
-                                Patient Name
-                            </th>
-                            <th className="p-4 text-left text-xs tracking-wide font-light">
-                                Phone No.
-                            </th>
-                            <th className="p-4 text-left text-xs tracking-wide font-light">
-                                Blood Gp.
-                            </th>
-                            <th className="p-4 text-left text-xs tracking-wide font-light">
-                                Age
-                            </th>
-                            <th className="p-4 text-left text-xs tracking-wide font-light">
-                                Gender
-                            </th>
-                            <th className="p-4 text-left text-xs tracking-wide font-light">
-                                Hospital
-                            </th>
+                            <th className="p-4 text-left text-xs tracking-wide font-light">Patient Name</th>
+                            <th className="p-4 text-left text-xs tracking-wide font-light">Phone No.</th>
+                            <th className="p-4 text-left text-xs tracking-wide font-light">Blood Gp.</th>
+                            <th className="p-4 text-left text-xs tracking-wide font-light">Age</th>
+                            <th className="p-4 text-left text-xs tracking-wide font-light">Gender</th>
+                            <th className="p-4 text-left text-xs tracking-wide font-light">Hospital</th>
                         </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200/40 bg-white/50">
