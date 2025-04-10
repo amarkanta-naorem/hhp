@@ -77,7 +77,7 @@ export default function RequestReceivedTable ({patients}: any) {
             </div>
 
             <div className="relative">
-                <div className="h-[calc(100vh-180px)] sm:h-[55vh] overflow-y-auto no-scrollbar">
+                <div className="h-[40vh] sm:h-[55vh] overflow-y-auto no-scrollbar">
                     <table className="w-full">
                         <thead className="sticky top-0 bg-white">
                             <tr>
