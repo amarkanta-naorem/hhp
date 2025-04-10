@@ -82,7 +82,7 @@ export default function RequestReceivedTable ({patients}: any) {
                         <thead className="sticky top-0 bg-white">
                             <tr>
                                 <th className="p-2 text-left text-xs">Patient</th>
-                                <th className="p-2 text-left text-xs hidden sm:table-cell">Phone</th>
+                                <th className="p-2 text-left text-xs">Phone</th>
                                 <th className="p-2 text-left text-xs">Blood</th>
                                 <th className="p-2 text-left text-xs">Age</th>
                                 <th className="p-2 text-left text-xs">Gender</th>
@@ -94,7 +94,7 @@ export default function RequestReceivedTable ({patients}: any) {
                         {patients.map((patient: any, index: any) => (
                                 <tr key={index} className="hover:bg-gray-50">
                                     <td className="p-2 text-sm">{patient.patient_name}</td>
-                                    <td className="p-2 text-sm hidden sm:table-cell">{patient.patient_phone_no}</td>
+                                    <td className="p-2 text-sm">{patient.patient_phone_no}</td>
                                     <td className="px-2 py-4 whitespace-nowrap text-center">
                                         <span className="inline-flex items-center px-3 py-1 rounded-full bg-red-100/80 text-red-700 text-sm font-medium">
                                             <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 48 48"><path fill="currentColor" fillRule="evenodd" d="m24 4l-.69.66l-.004.004l-.009.008l-.032.032l-.122.119q-.16.157-.456.455a72 72 0 0 0-6.492 7.621C12.681 17.68 9 24.082 9 30.08C9 37.845 15.796 44 24 44s15-6.155 15-13.92c0-6-3.681-12.401-7.195-17.18a72 72 0 0 0-6.492-7.622a42 42 0 0 0-.578-.574l-.032-.032l-.01-.008l-.003-.004zm-8.535 27.399a1 1 0 1 0-1.902.62a11.53 11.53 0 0 0 4.177 5.766a11.48 11.48 0 0 0 6.76 2.203c.552 0 1-.449 1-1.003s-.448-1.003-1-1.003a9.5 9.5 0 0 1-5.584-1.82a9.53 9.53 0 0 1-3.451-4.764" clipRule="evenodd"></path></svg>
