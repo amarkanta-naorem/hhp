@@ -276,49 +276,61 @@ export default function RequestBloodPage() {
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 px-3 md:px-5 pt-3 md:pt-5">
         <h1 className="text-lg font-bold text-gray-800">Request Received</h1>
 
-        <div className="relative w-full md:w-64">
-          <input id="search-blood-request" className="peer w-full bg-transparent text-slate-700 text-sm border border-slate-300 rounded-md px-3 py-1 pr-10 transition duration-300 ease-in-out focus:outline-none focus:border-blue-500 hover:border-slate-400 shadow-xs focus:shadow" placeholder=" " value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={handleKeyDown}/>
-          <label htmlFor="search-blood-request" className={`absolute pointer-events-none bg-white px-1 left-3 text-slate-400 text-sm transition-all duration-300 ${  inputValue ? "-top-2 text-xs text-blue-600" : "top-[3px] peer-placeholder-shown:text-sm peer-placeholder-shown:text-slate-400"} peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600`}>Search</label>
+        <div className="w-full md:w-48 relative">
+            <input
+                id="search-blood-request"
+                className="peer w-full bg-transparent text-slate-700 text-sm border border-slate-300 rounded-md px-3 py-1 pr-10 transition duration-300 ease-in-out
+                    focus:outline-none focus:border-blue-500 hover:border-slate-400 shadow-xs focus:shadow"
+                placeholder=" "
+                value={inputValue}
+                onChange={(e) => {
+                    setInputValue(e.target.value);
+                }}
+                onKeyDown={handleKeyDown}
+            />
+            <label
+                htmlFor="search-blood-request"
+                className={`absolute pointer-events-none bg-white px-1 left-3 text-slate-400 text-sm transition-all duration-300 
+                    ${inputValue
+                    ? "-top-2 text-xs text-blue-600"
+                    : "top-1.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-slate-400"
+                } peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600`}
+            >
+                Search
+            </label>
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-3 md:p-5 gap-2">
-        <button className="flex items-center space-x-2 p-1 px-2 w-auto rounded-md text-white bg-[#c90606] text-xs cursor-pointer">
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" width={17} height={17} viewBox="0 0 24 24">
-              <path fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth={1.5} d="M10 14h2m0 0h2m-2 0v2m0-2v-2m10-.202c0-2.632 0-3.949-.77-4.804a3 3 0 0 0-.224-.225C20.151 6 18.834 6 16.202 6h-.374c-1.153 0-1.73 0-2.268-.153a4 4 0 0 1-.848-.352C12.224 5.224 11.816 4.815 11 4l-.55-.55c-.274-.274-.41-.41-.554-.53a4 4 0 0 0-2.18-.903C7.53 2 7.336 2 6.95 2c-.883 0-1.324 0-1.692.07A4 4 0 0 0 2.07 5.257C2 5.626 2 6.068 2 6.95M21.991 16c-.036 2.48-.22 3.885-1.163 4.828C19.657 22 17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172S2 17.771 2 14v-3" />
-            </svg>
-          </span>
-          <span>New Request</span>
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 mb-4 p-3">
+        <button className="w-full md:w-auto flex justify-center items-center space-x-2 bg-[#c90606] px-3 py-1.5 rounded-md text-white text-xs">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width={17} height={17} viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth={1.5} d="M10 14h2m0 0h2m-2 0v2m0-2v-2m10-.202c0-2.632 0-3.949-.77-4.804a3 3 0 0 0-.224-.225C20.151 6 18.834 6 16.202 6h-.374c-1.153 0-1.73 0-2.268-.153a4 4 0 0 1-.848-.352C12.224 5.224 11.816 4.815 11 4l-.55-.55c-.274-.274-.41-.41-.554-.53a4 4 0 0 0-2.18-.903C7.53 2 7.336 2 6.95 2c-.883 0-1.324 0-1.692.07A4 4 0 0 0 2.07 5.257C2 5.626 2 6.068 2 6.95M21.991 16c-.036 2.48-.22 3.885-1.163 4.828C19.657 22 17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172S2 17.771 2 14v-3"></path></svg>
+            </span>
+            <span>New Request</span>
         </button>
-
-        <div className="flex items-center flex-wrap gap-2">
-          <button className="flex items-center space-x-2 border-none p-1 rounded-md text-sm cursor-pointer">
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 16 16">
-                <path fill="currentColor" d="M5.03 1.97a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.06 0l-1-1a.75.75 0 0 1 1.06-1.06l.47.47l1.47-1.47a.75.75 0 0 1 1.06 0M6 3.75A.75.75 0 0 1 6.75 3h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 6 3.75M6 8a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 6 8m-.97 2.97a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.06 0l-1-1a.75.75 0 1 1 1.06-1.06l.47.47l1.47-1.47a.75.75 0 0 1 1.06 0M6 12.25a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1-.75-.75" />
-              </svg>
-            </span>
-            <span>Select Rows</span>
-          </button>
-          <span className="text-[#bdbdbd] cursor-default">/</span>
-          <button className="flex items-center space-x-2 border-none p-1 rounded-md text-sm cursor-pointer">
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 16 16">
-                <path fill="currentColor" d="M6 1a3 3 0 0 0-2.83 2H0v2h3.17a3.001 3.001 0 0 0 5.66 0H16V3H8.83A3 3 0 0 0 6 1M5 4a1 1 0 1 1 2 0a1 1 0 0 1-2 0m5 5a3 3 0 0 0-2.83 2H0v2h7.17a3.001 3.001 0 0 0 5.66 0H16v-2h-3.17A3 3 0 0 0 10 9m-1 3a1 1 0 1 1 2 0a1 1 0 0 1-2 0" />
-              </svg>
-            </span>
-            <span>View</span>
-          </button>
-          <span className="text-[#bdbdbd] cursor-default">/</span>
-          <button className="flex items-center space-x-2 border-none p-1 rounded-md text-sm cursor-pointer">
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24">
-                <path fill="currentColor" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z" />
-              </svg>
-            </span>
-            <span>Export</span>
-          </button>
+        <div className="flex items-center flex-wrap gap-2 text-sm">
+            <div className="flex items-center space-x-2">
+                <button className="flex items-center space-x-1 border-none p-1 rounded-md text-sm cursor-pointer">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 16 16"><path fill="currentColor" d="M5.03 1.97a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.06 0l-1-1a.75.75 0 0 1 1.06-1.06l.47.47l1.47-1.47a.75.75 0 0 1 1.06 0M6 3.75A.75.75 0 0 1 6.75 3h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 6 3.75M6 8a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 6 8m-.97 2.97a.75.75 0 0 1 0 1.06l-2 2a.75.75 0 0 1-1.06 0l-1-1a.75.75 0 1 1 1.06-1.06l.47.47l1.47-1.47a.75.75 0 0 1 1.06 0M6 12.25a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1-.75-.75"></path></svg>
+                    </span>
+                    <span>Select Rows</span>
+                </button>
+                <span className="text-[#bdbdbd] cursor-default">/</span>
+                <button className="flex items-center space-x-1 border-none p-1 rounded-md text-sm cursor-pointer">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 16 16"><path fill="currentColor" d="M6 1a3 3 0 0 0-2.83 2H0v2h3.17a3.001 3.001 0 0 0 5.66 0H16V3H8.83A3 3 0 0 0 6 1M5 4a1 1 0 1 1 2 0a1 1 0 0 1-2 0m5 5a3 3 0 0 0-2.83 2H0v2h7.17a3.001 3.001 0 0 0 5.66 0H16v-2h-3.17A3 3 0 0 0 10 9m-1 3a1 1 0 1 1 2 0a1 1 0 0 1-2 0"></path></svg>
+                    </span>
+                    <span>View</span>
+                </button>
+                <span className="text-[#bdbdbd] cursor-default">/</span>
+                <button className="flex items-center space-x-1 border-none p-1 rounded-md text-sm cursor-pointer">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24"><path fill="currentColor" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"></path></svg>
+                    </span>
+                    <span>Export</span>
+                </button>
+            </div>
         </div>
       </div>
 
