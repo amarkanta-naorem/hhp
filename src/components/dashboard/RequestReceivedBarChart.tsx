@@ -1,5 +1,5 @@
 import { Bar } from "react-chartjs-2";
-import {Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend,} from "chart.js";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend} from "chart.js";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -8,21 +8,24 @@ interface Patient {
 }
 
 interface RequestReceivedBarChartProps {
-  patients: Patient[];
+  patients: any;
 }
 
 export default function RequestReceivedBarChart({
   patients,
 }: RequestReceivedBarChartProps) {
-  const monthlyCounts = patients.reduce((acc: Record<string, number>, patient: Patient) => {
-    const date = new Date(patient.receive_datetime);
-    const monthYear = date.toLocaleDateString("default", {
-      month: "short",
-      year: "numeric",
-    });
-    acc[monthYear] = (acc[monthYear] || 0) + 1;
-    return acc;
-  }, {});
+  const monthlyCounts = patients.reduce(
+    (acc: Record<string, number>, patient: Patient) => {
+      const date = new Date(patient.receive_datetime);
+      const monthYear = date.toLocaleDateString("default", {
+        month: "short",
+        year: "numeric",
+      });
+      acc[monthYear] = (acc[monthYear] || 0) + 1;
+      return acc;
+    },
+    {}
+  );
 
   const sortedLabels = Object.keys(monthlyCounts).sort((a, b) => {
     return new Date(a).getTime() - new Date(b).getTime();
@@ -75,10 +78,8 @@ export default function RequestReceivedBarChart({
 
   return (
     <div className="bg-white border border-gray-200 shadow-xs rounded-md p-4 h-[72vh]">
-            <h1 className="text-lg font-bold text-gray-800 mb-4">
-                Blood Requests Per Month
-            </h1>
-            <div className="h-[calc(100%-2.5rem)]">
+      <h1 className="text-lg font-bold text-gray-800 mb-4">Blood Requests Per Month</h1>
+      <div className="h-[calc(100%-2.5rem)]">
         <Bar data={data} options={options} />
       </div>
     </div>
