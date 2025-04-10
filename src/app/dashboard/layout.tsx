@@ -12,7 +12,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="text-[#000000]">
       <div className="w-full h-[8vh] border-b border-[#eae4e4] bg-white fixed top-0 left-0 z-50">
         <div className="flex items-center justify-between px-5 h-full">
-          <Image src="/logo.svg" alt="HHP Logo" width={60} height={40} className="object-contain object-center p-1" style={{ filter: 'contrast(1.1)' }} />
+          <Image src="/logo.svg" alt="HHP Logo" width={60} height={40} className="object-contain object-center p-0 sm:p-1" style={{ filter: 'contrast(1.1)' }} />
           <div className="flex items-center gap-4">
             <div className="hidden md:block">
               <SettingMenu />
