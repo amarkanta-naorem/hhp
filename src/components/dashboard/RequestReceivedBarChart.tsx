@@ -74,11 +74,11 @@ export default function RequestReceivedBarChart({
   };
 
   return (
-    <div className="bg-white border border-gray-200 shadow-xs rounded-md p-5 h-[72vh]">
-      <h1 className="text-lg font-bold text-gray-800">
-        Blood Requests Per Month
-      </h1>
-      <div className="h-[calc(100%-2rem)] mt-4">
+    <div className="bg-white border border-gray-200 shadow-xs rounded-md p-4 h-[72vh]">
+            <h1 className="text-lg font-bold text-gray-800 mb-4">
+                Blood Requests Per Month
+            </h1>
+            <div className="h-[calc(100%-2.5rem)]">
         <Bar data={data} options={options} />
       </div>
     </div>
