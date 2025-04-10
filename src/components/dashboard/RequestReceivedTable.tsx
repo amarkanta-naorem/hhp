@@ -77,7 +77,7 @@ export default function RequestReceivedTable ({patients}: any) {
             </div>
 
             <div className="relative">
-                <div className="h-[40vh] sm:h-[55vh] overflow-y-auto no-scrollbar">
+                <div className="h-[calc(72vh-10rem)] sm:h-[calc(72vh-8rem)] overflow-y-auto no-scrollbar">
                     <table className="w-full">
                         <thead className="sticky top-0 bg-white">
                             <tr>
@@ -85,8 +85,8 @@ export default function RequestReceivedTable ({patients}: any) {
                                 <th className="p-2 text-left text-xs hidden sm:table-cell">Phone</th>
                                 <th className="p-2 text-left text-xs">Blood</th>
                                 <th className="p-2 text-left text-xs">Age</th>
-                                <th className="p-2 text-left text-xs hidden md:table-cell">Gender</th>
-                                <th className="p-2 text-left text-xs hidden lg:table-cell">Hospital</th>
+                                <th className="p-2 text-left text-xs">Gender</th>
+                                <th className="p-2 text-left text-xs">Hospital</th>
                             </tr>
                         </thead>
                         <tbody>
