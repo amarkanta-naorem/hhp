@@ -16,7 +16,7 @@ export default function RequestReceivedTable ({patients}: any) {
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 mb-4">
                 <h1 className="text-lg font-bold text-gray-800">Request Received</h1>
                 
-                <div className="w-full md:w-48">
+                <div className="w-full md:w-48 relative">
                     <input
                         id="search-blood-request"
                         className="peer w-full bg-transparent text-slate-700 text-sm border border-slate-300 rounded-md px-3 py-1 pr-10 transition duration-300 ease-in-out
@@ -33,7 +33,7 @@ export default function RequestReceivedTable ({patients}: any) {
                         className={`absolute pointer-events-none bg-white px-1 left-3 text-slate-400 text-sm transition-all duration-300 
                             ${inputValue
                             ? "-top-2 text-xs text-blue-600"
-                            : "top-[3px] peer-placeholder-shown:text-sm peer-placeholder-shown:text-slate-400"
+                            : "top-1.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-slate-400"
                         } peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600`}
                     >
                         Search
