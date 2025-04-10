@@ -12,7 +12,7 @@ export default function RequestReceivedTable ({patients}: any) {
     };
 
     return (
-        <div className="bg-white border border-gray-200 shadow-xs rounded-md p-4 h-[72vh]">
+        <div className="bg-white border border-gray-200 shadow-xs rounded-md p-4 h-auto sm:h-[72vh]">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 mb-4">
                 <h1 className="text-lg font-bold text-gray-800">Request Received</h1>
                 
