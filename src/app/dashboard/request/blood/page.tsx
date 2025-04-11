@@ -1,9 +1,11 @@
 "use client";
 import { PatientData } from "@/utils/PatientData";
 import { useState } from "react";
+import BloodRequestForm from "@/components/dashboard/BloodRequest/BloodRequestForm";
 
 export default function RequestBloodPage() {
   const [inputValue, setInputValue] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const isInputEmpty = inputValue.trim() === "";
 
@@ -41,7 +43,7 @@ export default function RequestBloodPage() {
       </div>
 
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 mb-4 p-3">
-        <button className="w-full md:w-auto flex justify-center items-center space-x-2 bg-[#c90606] px-3 py-1.5 rounded-md text-white text-xs">
+        <button onClick={() => setIsModalOpen(true)} className="w-full md:w-auto flex justify-center items-center space-x-2 bg-[#c90606] px-3 py-1.5 rounded-md text-white text-xs">
             <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width={17} height={17} viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth={1.5} d="M10 14h2m0 0h2m-2 0v2m0-2v-2m10-.202c0-2.632 0-3.949-.77-4.804a3 3 0 0 0-.224-.225C20.151 6 18.834 6 16.202 6h-.374c-1.153 0-1.73 0-2.268-.153a4 4 0 0 1-.848-.352C12.224 5.224 11.816 4.815 11 4l-.55-.55c-.274-.274-.41-.41-.554-.53a4 4 0 0 0-2.18-.903C7.53 2 7.336 2 6.95 2c-.883 0-1.324 0-1.692.07A4 4 0 0 0 2.07 5.257C2 5.626 2 6.068 2 6.95M21.991 16c-.036 2.48-.22 3.885-1.163 4.828C19.657 22 17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172S2 17.771 2 14v-3"></path></svg>
             </span>
@@ -97,7 +99,7 @@ export default function RequestBloodPage() {
                     <div className="text-sm font-medium text-gray-900 truncate max-w-[120px] md:max-w-none">{patient.patient_name}</div>
                   </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap">
-                    <div className="text-sm text-gray-900 font-mono">{patient.patient_phone_no}</div>
+                    <div className="text-sm font-medium text-gray-900 truncate max-w-[120px] md:max-w-none">{patient.patient_phone_no}</div>
                   </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap">
                     <span className="inline-flex items-center px-3 py-1 rounded-full bg-red-100/80 text-red-700 text-sm font-medium">
@@ -124,7 +126,7 @@ export default function RequestBloodPage() {
                     <div className="text-sm text-gray-900">{formatDate(patient.receive_datetime)}</div>
                   </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap">
-                    <div className={`text-sm ${patient.donated_datetime ? "text-gray-900" : "text-red-600 font-mono"}`}>{patient.donated_datetime ? formatDate(patient.donated_datetime) : "Pending donation"}</div>
+                    <div className={`text-sm font-medium truncate max-w-[120px] md:max-w-none ${patient.donated_datetime ? "text-gray-900" : "text-red-600 "}`}>{patient.donated_datetime ? formatDate(patient.donated_datetime) : "Pending donation"}</div>
                   </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap">
                     <div className={`text-xs text-center text-gray-900 py-1 px-2 rounded-lg ${patient.status === "Will Give" ? "bg-blue-600 text-white" : patient.status === "Under Process" ? "bg-amber-400 text-white" : patient.status === "Completed" ? "bg-green-600 text-white" : patient.status === "Pending" ? "bg-orange-500 text-white" : patient.status === "Closed" ? "bg-gray-600 text-white" : ""}`}>{patient.status}</div>
@@ -148,6 +150,9 @@ export default function RequestBloodPage() {
         </div>
         <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-white/80 pointer-events-none"></div>
       </div>
+
+
+        {isModalOpen && <BloodRequestForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>}
     </div>
   );
 }

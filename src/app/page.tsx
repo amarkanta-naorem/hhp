@@ -8,7 +8,7 @@ import BloodHelpModal from "../components/BloodHelpModal";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function Home() {
-  const [currentVideo, setCurrentVideo] = useState<number>(1); // Explicitly type as number
+  const [currentVideo, setCurrentVideo] = useState<number>(1);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [showBloodHelpModal, setShowBloodHelpModal] = useState(false);
   const totalVideos = 9;
@@ -27,23 +27,14 @@ export default function Home() {
   return (
     <>
       <div className="min-h-screen flex flex-col">
-        <VideoBackground
-          currentVideo={currentVideo}
-          setCurrentVideo={setCurrentVideo}
-          setIsVideoLoaded={setIsVideoLoaded}
-          totalVideos={totalVideos}
-        >
+        <VideoBackground currentVideo={currentVideo} setCurrentVideo={setCurrentVideo} setIsVideoLoaded={setIsVideoLoaded} totalVideos={totalVideos}>
           <Header />
           <MainContent setShowBloodHelpModal={setShowBloodHelpModal} />
         </VideoBackground>
         <Footer />
       </div>
 
-      <BloodHelpModal
-        showBloodHelpModal={showBloodHelpModal}
-        setShowBloodHelpModal={setShowBloodHelpModal}
-      />
-
+      <BloodHelpModal showBloodHelpModal={showBloodHelpModal} setShowBloodHelpModal={setShowBloodHelpModal}/>
       <SpeedInsights />
     </>
   );

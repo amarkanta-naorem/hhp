@@ -6,9 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-center md:text-left">
-              Contact Us
-            </h3>
+            <h3 className="text-lg font-semibold text-center md:text-left">Contact Us</h3>
             <ul className="space-y-3">
               {[
                 {
@@ -32,10 +30,7 @@ export default function Footer() {
                   href: "https://maps.google.com/?q=Imphal,Manipur",
                 },
               ].map((item, index) => (
-                <li
-                  key={index}
-                  className="flex items-center gap-3 justify-center md:justify-start"
-                >
+                <li key={index} className="flex items-center gap-3 justify-center md:justify-start">
                   <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" >{item.icon}</svg>
                   <a href={item.href} className="hover:text-red-400 transition-colors text-center md:text-left">{item.text}</a>
                 </li>
@@ -59,9 +54,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-center md:text-right">
-              Join the Community
-            </h3>
+            <h3 className="text-lg font-semibold text-center md:text-right">Join the Community</h3>
             <div className="flex justify-center md:justify-end gap-5">
               <a href="https://www.facebook.com/groups/251400595265833" aria-label="Facebook" className="p-2 rounded-full bg-[#1877F2] hover:bg-[#166FE5] transition-colors flex items-center justify-center" target="_blank" rel="noopener noreferrer" >
                 <svg className="w-5 h-5" fill="white" viewBox="0 0 24 24">
@@ -85,10 +78,7 @@ export default function Footer() {
             </div>
             <p className="text-gray-400">Made with ❤️ in Manipur, Kangleipak</p>
           </div>
-          <p className="text-gray-500 text-sm mt-4">
-            © {new Date().getFullYear()} Helping Hands for People (HHP),Manipur.
-            All rights reserved.
-          </p>
+          <p className="text-gray-500 text-sm mt-4">© {new Date().getFullYear()} Helping Hands for People (HHP),Manipur. All rights reserved.</p>
         </div>
       </div>
     </footer>

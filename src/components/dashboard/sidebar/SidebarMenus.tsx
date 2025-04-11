@@ -13,12 +13,12 @@ export default function SidebarMenus({ closeSidebar }: { closeSidebar: () => voi
 
   return (
     <div className="flex flex-col items-start md:items-center space-y-5 w-full px-2">
-      <button onClick={() => handleNavigation('/dashboard')} className="p-2 hover:bg-gray-100 rounded-full flex items-center gap-3 w-full">
+      <button onClick={() => handleNavigation('/dashboard')} className="p-2 rounded-full flex items-center gap-3 w-full">
         <SidebarDashboardMenu />
         <span className="text-sm md:hidden">Dashboard</span>
       </button>
       
-      <button onClick={() => handleNavigation('/dashboard/request/blood')} className="p-2 hover:bg-gray-100 rounded-full flex items-center gap-3 w-full">
+      <button onClick={() => handleNavigation('/dashboard/request/blood')} className="p-2 rounded-full flex items-center gap-3 w-full">
         <SidebarRequestBloodMenu />
         <span className="text-sm md:hidden">Request Blood</span>
       </button>

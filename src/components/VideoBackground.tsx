@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 interface VideoBackgroundProps {
   currentVideo: number;
-  setCurrentVideo: (video: number | ((prev: number) => number)) => void; // Updated to accept function
+  setCurrentVideo: (video: number | ((prev: number) => number)) => void;
   setIsVideoLoaded: (loaded: boolean) => void;
   totalVideos: number;
   children: React.ReactNode;
@@ -28,7 +28,7 @@ export default function VideoBackground({
 
     const handleEnded = () => {
       setIsVideoLoaded(false);
-      setCurrentVideo((prev) => (prev % totalVideos) + 1); // Functional update is now valid
+      setCurrentVideo((prev) => (prev % totalVideos) + 1);
     };
 
     const handleError = () => {
@@ -53,32 +53,14 @@ export default function VideoBackground({
   return (
     <section className="relative w-full h-screen overflow-hidden">
       <div className="absolute inset-0">
-        <video
-          ref={videoRef}
-          key={`video-${currentVideo}`}
-          autoPlay
-          muted
-          playsInline
-          preload="auto"
-          className="absolute w-full h-full object-cover"
-          aria-label="Blood donation awareness video"
-        >
-          <source
-            src={`/videos/landing-page-video-${currentVideo}.webm`}
-            type="video/webm"
-          />
-          <source
-            src={`/videos/landing-page-video-${currentVideo}.mp4`}
-            type="video/mp4"
-          />
+        <video ref={videoRef} key={`video-${currentVideo}`} autoPlay muted playsInline preload="auto" className="absolute w-full h-full object-cover" aria-label="Blood donation awareness video">
+          <source src={`/videos/landing-page-video-${currentVideo}.webm`} type="video/webm"/>
+          <source src={`/videos/landing-page-video-${currentVideo}.mp4`} type="video/mp4"/>
           Your browser does not support HTML5 video.
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
       </div>
-
-      <div className="relative z-10 h-full flex flex-col justify-around p-8 text-white">
-        {children}
-      </div>
+      <div className="relative z-10 h-full flex flex-col justify-around p-8 text-white">{children}</div>
     </section>
   );
 }
