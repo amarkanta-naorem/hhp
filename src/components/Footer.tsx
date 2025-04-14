@@ -42,7 +42,7 @@ export default function Footer() {
             <h3 className="text-lg font-semibold text-center">Quick Links</h3>
             <ul className="space-y-3">
               {[
-                { name: "Home", path: "/" },
+                { name: "Dashboard", path: "/dashboard" },
                 { name: "Donate Blood", path: "/donate" },
                 { name: "Request Blood", path: "/request" },
               ].map((link) => (
