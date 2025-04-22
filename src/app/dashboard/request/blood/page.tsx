@@ -102,11 +102,11 @@ export default function RequestBloodPage() {
                     <div className="text-sm font-medium text-gray-900 truncate max-w-[120px] md:max-w-none">{patient.patient_phone_no}</div>
                   </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-red-100/80 text-red-700 text-sm font-medium">
-                      <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 48 48">
-                        <path fill="currentColor" fillRule="evenodd" d="m24 4l-.69.66l-.004.004l-.009.008l-.032.032l-.122.119q-.16.157-.456.455a72 72 0 0 0-6.492 7.621C12.681 17.68 9 24.082 9 30.08C9 37.845 15.796 44 24 44s15-6.155 15-13.92c0-6-3.681-12.401-7.195-17.18a72 72 0 0 0-6.492-7.622a42 42 0 0 0-.578-.574l-.032-.032l-.01-.008l-.003-.004zm-8.535 27.399a1 1 0 1 0-1.902.62a11.53 11.53 0 0 0 4.177 5.766a11.48 11.48 0 0 0 6.76 2.203c.552 0 1-.449 1-1.003s-.448-1.003-1-1.003a9.5 9.5 0 0 1-5.584-1.82a9.53 9.53 0 0 1-3.451-4.764" clipRule="evenodd" />
-                      </svg>
-                      {patient.patient_blood_group}
+                    <span className="inline-flex items-center px-3 py-1 rounded-full bg-red-100/90 text-red-700 text-sm font-medium border border-red-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 48 48" className="mr-1">
+                            <path fill="currentColor" fillRule="evenodd" d="m24 4l-.69.66l-.004.004l-.009.008l-.032.032l-.122.119q-.16.157-.456.455a72 72 0 0 0-6.492 7.621C12.681 17.68 9 24.082 9 30.08C9 37.845 15.796 44 24 44s15-6.155 15-13.92c0-6-3.681-12.401-7.195-17.18a72 72 0 0 0-6.492-7.622a42 42 0 0 0-.578-.574l-.032-.032l-.01-.008l-.003-.004zm-8.535 27.399a1 1 0 1 0-1.902.62a11.53 11.53 0 0 0 4.177 5.766a11.48 11.48 0 0 0 6.76 2.203c.552 0 1-.449 1-1.003s-.448-1.003-1-1.003a9.5 9.5 0 0 1-5.584-1.82a9.53 9.53 0 0 1-3.451-4.764" clipRule="evenodd"></path>
+                        </svg>
+                        {patient.patient_blood_group}
                     </span>
                   </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap text-center">
@@ -116,7 +116,13 @@ export default function RequestBloodPage() {
                     </div>
                   </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap text-center">
-                    <span className={`flex items-center justify-center w-[3rem] py-0.5 rounded-md text-xs font-medium ${patient.gender === "Male" ? "bg-blue-100 text-blue-800" : "bg-pink-100 text-[#f50057]"}`}>{patient.gender}</span>
+                    <span className={`flex items-center justify-center w-[4rem] py-0.5 rounded-md text-xs font-medium ${
+                      patient.gender === "Male"
+                          ? "bg-blue-100/90 text-blue-800 border border-blue-200"
+                          : "bg-pink-100/90 text-pink-800 border border-pink-200"
+                    }`}>
+                        {patient.gender}
+                    </span>
                   </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap">
                     <div className="text-sm text-gray-900 font-medium truncate max-w-[150px] md:max-w-none">{patient.hospital}</div>
@@ -129,8 +135,30 @@ export default function RequestBloodPage() {
                     <div className={`text-sm font-medium truncate max-w-[120px] md:max-w-none ${patient.donated_datetime ? "text-gray-900" : "text-red-600 "}`}>{patient.donated_datetime ? formatDate(patient.donated_datetime) : "Pending donation"}</div>
                   </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap">
-                    <div className={`text-xs text-center text-gray-900 py-1 px-2 rounded-lg ${patient.status === "Scheduled" ? "bg-blue-600 text-white" : patient.status === "Pending" ? "bg-amber-400 text-white" : patient.status === "Completed" ? "bg-green-600 text-white" : patient.status === "On Hold" ? "bg-orange-500 text-white" : patient.status === "Closed" ? "bg-gray-600 text-white" : ""}`}>{patient.status}</div>
-                  </td>
+                      <div className={`text-xs font-medium px-3 py-1.5 rounded-full border shadow-sm ${
+                          patient.status === "Scheduled"
+                              ? "bg-blue-50 text-blue-800 border-blue-200"
+                              : patient.status === "Pending"
+                                  ? "bg-amber-50 text-amber-800 border-amber-200"
+                                  : patient.status === "Completed"
+                                      ? "bg-green-50 text-green-800 border-green-200"
+                                      : patient.status === "On Hold"
+                                          ? "bg-orange-50 text-orange-800 border-orange-200"
+                                          : patient.status === "Closed"
+                                              ? "bg-gray-100 text-gray-800 border-gray-300"
+                                              : ""
+                      }`}>
+                          <div className="flex items-center justify-center space-x-1.5">
+    <span className={`w-2 h-2 rounded-full ${
+        patient.status === "Scheduled" ? "bg-blue-500"
+            : patient.status === "Pending" ? "bg-amber-500"
+                : patient.status === "Completed" ? "bg-green-500"
+                    : patient.status === "On Hold" ? "bg-orange-500"
+                        : "bg-gray-500"
+    }`}></span>
+                              <span>{patient.status}</span>
+                          </div>
+                      </div>                  </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap text-center">
                     <button className="bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-1 md:gap-2 cursor-pointer border-2 border-blue-600 rounded-lg p-1 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300 ease-in-out">
                       <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24">
