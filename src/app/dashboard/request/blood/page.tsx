@@ -32,7 +32,7 @@ export default function RequestBloodPage() {
 
   return (
     
-    <div className="bg-white border border-gray-200 shadow-xs rounded-md m-3 md:m-5 min-h-[calc(100vh-160px)]">
+    <div className="bg-white border border-gray-200 shadow-xs rounded-md m-3 min-h-[calc(100vh-160px)]">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 px-3 md:px-5 pt-3 md:pt-5">
         <h1 className="text-lg font-bold text-gray-800">Request Received</h1>
 
@@ -76,7 +76,7 @@ export default function RequestBloodPage() {
       </div>
 
       <div className="relative">
-        <div className="h-[60vh] md:h-[68vh] overflow-x-auto overflow-y-auto no-scrollbar">
+        <div className="h-[60vh] md:h-[72vh] overflow-x-auto overflow-y-auto no-scrollbar">
           <table className="w-full min-w-[1000px] md:min-w-full divide-y divide-gray-200/70">
             <thead className="sticky top-0 bg-white z-10">
               <tr>
@@ -129,7 +129,7 @@ export default function RequestBloodPage() {
                     <div className={`text-sm font-medium truncate max-w-[120px] md:max-w-none ${patient.donated_datetime ? "text-gray-900" : "text-red-600 "}`}>{patient.donated_datetime ? formatDate(patient.donated_datetime) : "Pending donation"}</div>
                   </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap">
-                    <div className={`text-xs text-center text-gray-900 py-1 px-2 rounded-lg ${patient.status === "Will Give" ? "bg-blue-600 text-white" : patient.status === "Under Process" ? "bg-amber-400 text-white" : patient.status === "Completed" ? "bg-green-600 text-white" : patient.status === "Pending" ? "bg-orange-500 text-white" : patient.status === "Closed" ? "bg-gray-600 text-white" : ""}`}>{patient.status}</div>
+                    <div className={`text-xs text-center text-gray-900 py-1 px-2 rounded-lg ${patient.status === "Scheduled" ? "bg-blue-600 text-white" : patient.status === "Pending" ? "bg-amber-400 text-white" : patient.status === "Completed" ? "bg-green-600 text-white" : patient.status === "On Hold" ? "bg-orange-500 text-white" : patient.status === "Closed" ? "bg-gray-600 text-white" : ""}`}>{patient.status}</div>
                   </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap text-center">
                     <button className="bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-1 md:gap-2 cursor-pointer border-2 border-blue-600 rounded-lg p-1 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300 ease-in-out">
@@ -148,7 +148,7 @@ export default function RequestBloodPage() {
             </tbody>
           </table>
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-white/80 pointer-events-none"></div>
+        <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-white/50 pointer-events-none"></div>
       </div>
 
 

@@ -9,7 +9,7 @@ export const PatientData = [
       hospital_address: "Porompat, Imphal East, Manipur",
       receive_datetime: "2024-11-10T09:30:00Z",
       donated_datetime: null,
-      status: "Will Give",
+      status: "Scheduled",
     },
     {
       patient_name: "Devi Chanu",
@@ -21,7 +21,7 @@ export const PatientData = [
       hospital_address: "Langol, Imphal West, Manipur",
       receive_datetime: "2025-03-15T14:15:00Z",
       donated_datetime: null,
-      status: "Under Process",
+      status: "Pending",
     },
     {
       patient_name: "Rajesh Khanna",
@@ -45,7 +45,7 @@ export const PatientData = [
       hospital_address: "North AOC, Imphal, Manipur",
       receive_datetime: "2025-02-25T16:35:00Z",
       donated_datetime: null,
-      status: "Pending",
+      status: "On Hold",
     },
     {
       patient_name: "Amit Kumar",
@@ -93,7 +93,7 @@ export const PatientData = [
       hospital_address: "Paona Bazar, Imphal, Manipur",
       receive_datetime: "2024-11-15T08:55:00Z",
       donated_datetime: null,
-      status: "Will Give",
+      status: "Scheduled",
     },
     {
       patient_name: "Rohit Mehta",
@@ -105,7 +105,7 @@ export const PatientData = [
       hospital_address: "Ansari Nagar, New Delhi",
       receive_datetime: "2025-02-10T12:15:00Z",
       donated_datetime: null,
-      status: "Under Process",
+      status: "Pending",
     },
     {
       patient_name: "Geeta Devi",
@@ -117,7 +117,7 @@ export const PatientData = [
       hospital_address: "Thangal Bazar, Imphal, Manipur",
       receive_datetime: "2025-04-07T17:30:00Z",
       donated_datetime: null,
-      status: "Pending",
+      status: "On Hold",
     },
     {
       patient_name: "Kiran Patel",
@@ -141,7 +141,7 @@ export const PatientData = [
       hospital_address: "Langol, Imphal West, Manipur",
       receive_datetime: "2025-03-15T09:30:00Z",
       donated_datetime: null,
-      status: "Under Process",
+      status: "Pending",
     },
     {
       patient_name: "Sneha Verma",
@@ -153,7 +153,7 @@ export const PatientData = [
       hospital_address: "Saket, New Delhi",
       receive_datetime: "2024-10-28T11:10:00Z",
       donated_datetime: null,
-      status: "Pending",
+      status: "On Hold",
     },
     {
       patient_name: "Arjun Yadav",
@@ -165,7 +165,7 @@ export const PatientData = [
       hospital_address: "North AOC, Imphal, Manipur",
       receive_datetime: "2025-04-15T15:15:00Z",
       donated_datetime: null,
-      status: "Will Give",
+      status: "Scheduled",
     },
     {
       patient_name: "Pooja Gupta",
@@ -177,7 +177,7 @@ export const PatientData = [
       hospital_address: "Sarita Vihar, New Delhi",
       receive_datetime: "2024-12-03T10:30:00Z",
       donated_datetime: null,
-      status: "Under Process",
+      status: "Pending",
     },
     {
       patient_name: "Nitin Sharma",
@@ -213,7 +213,7 @@ export const PatientData = [
       hospital_address: "Paona Bazar, Imphal, Manipur",
       receive_datetime: "2025-03-05T09:10:00Z",
       donated_datetime: null,
-      status: "Pending",
+      status: "On Hold",
     },
     {
       patient_name: "Meena Kumari",
@@ -225,7 +225,7 @@ export const PatientData = [
       hospital_address: "Ansari Nagar, New Delhi",
       receive_datetime: "2024-07-15T14:25:00Z",
       donated_datetime: null,
-      status: "Under Process",
+      status: "Pending",
     },
     {
       patient_name: "Rahul Sen",
@@ -237,6 +237,6 @@ export const PatientData = [
       hospital_address: "Thangal Bazar, Imphal, Manipur",
       receive_datetime: "2025-04-15T12:40:00Z",
       donated_datetime: null,
-      status: "Will Give",
+      status: "Scheduled",
     },
   ];

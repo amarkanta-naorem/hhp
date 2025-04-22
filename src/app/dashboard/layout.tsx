@@ -39,7 +39,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </div>
         </div>
 
-        <div className="w-full h-[92vh] bg-gray-50 overflow-y-auto">
+        <div className="w-full h-[92vh] bg-[#f5f5f5] overflow-y-auto">
           {children}
         </div>
       </div>
