@@ -75,8 +75,8 @@ export default function RequestReceivedBarChart({ patients }: RequestReceivedBar
           label: (context: TooltipItem<"bar">) => {
             const value = context.parsed.y;
             let category = 'Average';
-            if (value < averageValue * 0.75) category = 'Below Average';
-            if (value > averageValue * 1.25) category = 'Above Average';
+            if (value < averageValue * 0.75) category = 'Low';
+            if (value > averageValue * 1.25) category = 'High';
             return `${value} requests (${category})`;
           }
         }
