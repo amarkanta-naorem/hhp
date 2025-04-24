@@ -1,4 +1,4 @@
-export function FormatDatetime(dateString: string) {
+export function FormatDatetime(dateString: string): string {
     const options: Intl.DateTimeFormatOptions = {
         weekday: "short",
         year: "numeric",
@@ -13,18 +13,18 @@ export function FormatDatetime(dateString: string) {
     return date.toLocaleString("en-US", options);
 }
 
-export function TimeAgo(datetime: string) {
-    const getTimeAgo = (datetime: string) => {
-        const now:any = new Date();
-        const time:any = new Date(datetime);
-        const diff:any = now - time;
+export function TimeAgo(datetime: string): string {
+    const getTimeAgo: (datetime: string) => string = (datetime: string): string => {
+        const now: any = new Date();
+        const time: any = new Date(datetime);
+        const diff: any = now - time;
 
-        const seconds = Math.floor(diff / 1000);
-        const minutes = Math.floor(seconds / 60);
-        const hours = Math.floor(minutes / 60);
-        const days = Math.floor(hours / 24);
-        const months = Math.floor(days / 30);
-        const years = Math.floor(days / 365);
+        const seconds: number = Math.floor(diff / 1000);
+        const minutes: number = Math.floor(seconds / 60);
+        const hours: number = Math.floor(minutes / 60);
+        const days: number = Math.floor(hours / 24);
+        const months: number = Math.floor(days / 30);
+        const years: number = Math.floor(days / 365);
 
         if (seconds < 60) {
             return 'Just now';
