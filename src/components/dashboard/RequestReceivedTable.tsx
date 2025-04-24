@@ -1,6 +1,7 @@
 import { FormatDatetime, TimeAgo } from "@/utils/FormatDatetime";
+import React from "react";
 
-export default function RequestReceivedTable({ patients }: any) {
+export default function RequestReceivedTable({ patients }: any): React.ReactElement {
   return (
     <div className="bg-white border border-gray-200 shadow-lg rounded-xl p-4 h-[47vh] sm:h-[41vh]">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 mb-3">
@@ -27,7 +28,7 @@ export default function RequestReceivedTable({ patients }: any) {
                 ?.filter((patient: any): boolean => patient?.receive_datetime !== null)
                 ?.sort((a: any, b: any): number => new Date(b.receive_datetime).getTime() - new Date(a.receive_datetime).getTime())
                 ?.slice(0, 4)
-                ?.map((patient: any, index: any) => (
+                ?.map((patient: any, index: any): React.ReactElement => (
                   <tr key={index} className="hover:bg-gray-50/50 transition-colors">
                     <td className="p-2 text-sm flex items-center space-x-5">{patient?.patient_name}</td>
                     <td className="p-2 text-sm text-gray-700">{patient?.patient_phone_no}</td>

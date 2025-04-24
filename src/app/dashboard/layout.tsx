@@ -1,11 +1,11 @@
 "use client";
+import Image from "next/image";
 import React, { useState } from "react";
 import SidebarMenus from "@/components/dashboard/sidebar/SidebarMenus";
-import Image from "next/image";
 import SettingMenu from "@/components/dashboard/sidebar/Menus/SettingMenu";
 import HamburgerMenu from "@/components/dashboard/sidebar/Menus/HamburgerMenu";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({ children }: { children: React.ReactNode }): React.ReactElement {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (

@@ -1,16 +1,16 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import { PatientData } from "@/utils/PatientData";
 import { FormatDatetime, TimeAgo } from "@/utils/FormatDatetime";
 import BloodRequestForm from "@/components/dashboard/BloodRequest/BloodRequestForm";
 
-export default function RequestBloodPage() {
+export default function RequestBloodPage(): React.ReactElement {
   const [inputValue, setInputValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const isInputEmpty = inputValue.trim() === "";
+  const isInputEmpty: boolean = inputValue.trim() === "";
 
-  const handleKeyDown = (e: any) => {
+  const handleKeyDown: any = (e: any): void => {
     if (e.key === "Enter" && !isInputEmpty) {
       alert(inputValue);
     }
@@ -88,7 +88,7 @@ export default function RequestBloodPage() {
             <tbody className="divide-y divide-gray-200/40 bg-white/50">
               {PatientData
                   ?.sort((a: any, b: any): number => new Date(b.receive_datetime).getTime() - new Date(a.receive_datetime).getTime())
-                  ?.map((patient: any, index: any) => (
+                  ?.map((patient: any, index: any): React.ReactElement => (
                 <tr key={index} className="group hover:bg-white/90 transition-all duration-200 ease-out">
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap">
                     <div className="text-sm font-medium text-gray-900 truncate max-w-[120px] md:max-w-none">{patient?.patient_name}</div>
@@ -135,7 +135,7 @@ export default function RequestBloodPage() {
                         <span className={`w-2 h-2 rounded-full ${ patient?.status === "Scheduled" ? "bg-blue-500" : patient?.status === "Pending" ? "bg-amber-500" : patient?.status === "Completed" ? "bg-green-500" : patient?.status === "On Hold" ? "bg-orange-500" : "bg-gray-500" }`}></span>
                         <span>{patient?.status}</span>
                       </div>
-                    </div>{" "}
+                    </div>
                   </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap text-center">
                     <button className="bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-1 md:gap-2 cursor-pointer border-2 border-blue-600 rounded-lg p-1 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300 ease-in-out">
