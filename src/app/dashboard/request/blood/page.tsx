@@ -126,7 +126,7 @@ export default function RequestBloodPage(): React.ReactElement {
                       {patient?.donated_datetime ? FormatDatetime(patient?.donated_datetime) : patient?.scheduled_at ? FormatDatetime(patient?.scheduled_at) : patient?.closed_on ? FormatDatetime(patient?.closed_on) : patient?.status}
                     </div>
                     <div className="text-xs text-gray-500">
-                      {patient?.donated_datetime ? TimeAgo(patient?.donated_datetime) : patient?.scheduled_at ? TimeAgo(patient?.scheduled_at) : patient?.closed_on ? TimeAgo(patient?.closed_on) : null}
+                      {patient?.donated_datetime ? TimeAgo(patient?.donated_datetime) : patient?.scheduled_at ? patient?.status : patient?.closed_on ? TimeAgo(patient?.closed_on) : null}
                     </div>
                   </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap">

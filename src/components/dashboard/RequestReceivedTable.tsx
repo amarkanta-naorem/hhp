@@ -25,7 +25,7 @@ export default function RequestReceivedTable({ patients }: any): React.ReactElem
             </thead>
             <tbody>
               {patients
-                ?.filter((patient: any): boolean => patient?.receive_datetime !== null)
+                ?.filter((patient: any): boolean => patient?.receive_datetime !== null && patient.status !== "Closed" && patient.status !== "Completed")
                 ?.sort((a: any, b: any): number => new Date(b.receive_datetime).getTime() - new Date(a.receive_datetime).getTime())
                 ?.slice(0, 4)
                 ?.map((patient: any, index: any): React.ReactElement => (
