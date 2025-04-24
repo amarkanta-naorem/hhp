@@ -65,6 +65,7 @@ export default function RequestBloodPage() {
           <table className="w-full min-w-[1000px] md:min-w-full divide-y divide-gray-200/70">
             <thead className="sticky top-0 bg-white z-10">
               <tr>
+                <th className="p-2 md:p-4 text-left text-sm tracking-wide font-medium">Sl. No.</th>
                 <th className="p-2 md:p-4 text-left text-sm tracking-wide font-medium">Patient Name</th>
                 <th className="p-2 md:p-4 text-left text-sm tracking-wide font-medium">Phone No.</th>
                 <th className="p-2 md:p-4 text-left text-sm tracking-wide font-medium">Blood Gp.</th>
@@ -82,6 +83,9 @@ export default function RequestBloodPage() {
                   ?.sort((a: any, b: any):number => new Date(b.receive_datetime).getTime() - new Date(a.receive_datetime).getTime())
                   ?.map((patient: any, index: any) => (
                 <tr key={index} className="group hover:bg-white/90 transition-all duration-200 ease-out">
+                  <td className="px-2 md:px-4 py-3 whitespace-nowrap">
+                    <div className="text-sm font-medium text-gray-900 truncate max-w-[120px] md:max-w-none">{index + 1}</div>
+                  </td>
                   <td className="px-2 md:px-4 py-3 whitespace-nowrap">
                     <div className="text-sm font-medium text-gray-900 truncate max-w-[120px] md:max-w-none">{patient?.patient_name}</div>
                   </td>
