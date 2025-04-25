@@ -1,9 +1,86 @@
-import { useEffect, useRef, useState } from "react";
-import AttendantForm from "@/components/AttendantForm";
+import React, { useEffect, useRef, useState } from "react";
+import PersonalInformationForm from "@/components/dashboard/BloodRequest/WizardForm/PersonalInformationForm";
+import BloodRequirementForm from "@/components/dashboard/BloodRequest/WizardForm/BloodRequirementForm";
+import EmergencyDetailForm from "@/components/dashboard/BloodRequest/WizardForm/EmergencyDetailForm";
+import ReviewForm from "@/components/dashboard/BloodRequest/WizardForm/ReviewForm";
 
-export default function BloodRequestForm({ isModalOpen, setIsModalOpen }: any) {
+interface FormData {
+    patient_name: string;
+    age: string;
+    gender: string;
+    patient_blood_group: string;
+    guardian_name: string;
+    address: string;
+    patient_phone_no: string;
+    attendants: { name: string; relation: string; phone: string }[];
+    haemoglobin: string;
+    platelet_count: string;
+    hospital: string;
+    hospital_address: string;
+    ward: string;
+    bed_no: string;
+    clinical_diagnosis: string;
+    blood_request_type: string;
+    number_of_units: string;
+    transfusion_till_date: {
+        PRBC: number;
+        SDP: number;
+        "PC/RDP/PRP": number;
+        FFP: number;
+        LD: number;
+        total: number;
+    };
+    replacement_till_date: {
+        Family: number;
+        Relatives: number;
+        Friends: number;
+        Organisations: number;
+        total: number;
+    };
+    concern_doctor: string;
+    referred_by: string;
+}
+
+export default function BloodRequestForm({ isModalOpen, setIsModalOpen }: any): React.ReactElement {
     const modalRef = useRef<HTMLDivElement>(null);
     const [currentStep, setCurrentStep] = useState(1);
+
+    const [formData, setFormData] = useState<FormData>({
+        patient_name: "",
+        age: "",
+        gender: "",
+        patient_blood_group: "",
+        guardian_name: "",
+        address: "",
+        patient_phone_no: "",
+        attendants: [{ name: "", relation: "", phone: "" }],
+        haemoglobin: "",
+        platelet_count: "",
+        hospital: "",
+        hospital_address: "",
+        ward: "",
+        bed_no: "",
+        clinical_diagnosis: "",
+        blood_request_type: "",
+        number_of_units: "1",
+        transfusion_till_date: {
+            PRBC: 0,
+            SDP: 0,
+            "PC/RDP/PRP": 0,
+            FFP: 0,
+            LD: 0,
+            total: 0,
+        },
+        replacement_till_date: {
+            Family: 0,
+            Relatives: 0,
+            Friends: 0,
+            Organisations: 0,
+            total: 0,
+        },
+        concern_doctor: "",
+        referred_by: "",
+    });
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -18,6 +95,37 @@ export default function BloodRequestForm({ isModalOpen, setIsModalOpen }: any) {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [isModalOpen, setIsModalOpen]);
+
+    const handleAttendantChange = (index: number, field: string, value: string) => {
+        setFormData((prev) => {
+            const newAttendants = [...prev.attendants];
+            newAttendants[index] = {
+                ...newAttendants[index],
+                [field]: value,
+            };
+            return {
+                ...prev,
+                attendants: newAttendants,
+            };
+        });
+    };
+
+    const addAttendant = () => {
+        setFormData((prev) => ({
+            ...prev,
+            attendants: [...prev.attendants, { name: "", relation: "", phone: "" }],
+        }));
+    };
+
+    const removeAttendant = (index: number) => {
+        setFormData((prev) => {
+            const newAttendants = prev.attendants.filter((_, i) => i !== index);
+            return {
+                ...prev,
+                attendants: newAttendants.length > 0 ? newAttendants : [{ name: "", relation: "", phone: "" }],
+            };
+        });
+    };
 
     return (
         <div className="fixed inset-0 bg-black/30 backdrop-blur-xs flex justify-center items-center z-50 animate-fadeIn">
@@ -44,7 +152,7 @@ export default function BloodRequestForm({ isModalOpen, setIsModalOpen }: any) {
                     </div>
                 </div>
 
-                <div className="relative py-3 px-2 sm:px-4 w-full mx-auto">
+                <div className="relative py-3 px-2 sm:px-4 pb-5 w-full mx-auto">
                     <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-gray-100 transform -translate-y-1/2">
                         <div className="absolute h-full bg-gradient-to-r from-rose-500 to-rose-400 transition-all duration-500 ease-out" style={{ width: currentStep >= 2 ? '25%' : '0%', left: '15%'}}></div>
                         <div className="absolute h-full bg-gradient-to-r from-rose-500 to-rose-400 transition-all duration-500 ease-out" style={{ width: currentStep >= 3 ? '25%' : '0%', left: '37.5%' }}></div>
@@ -54,7 +162,7 @@ export default function BloodRequestForm({ isModalOpen, setIsModalOpen }: any) {
                     <div className="relative flex justify-between px-4 sm:px-8">
                         {[1, 2, 3, 4].map((step) => (
                             <div key={step} className="relative flex flex-col items-center z-10" style={{ width: '25%' }} >
-                                <button onClick={() => setCurrentStep(step)} className={`relative flex items-center justify-center w-6 h-6 rounded-full transition-all duration-300 ${ currentStep >= step ? 'bg-gradient-to-br from-rose-500 to-rose-600 shadow-lg shadow-rose-100 hover:shadow-rose-200 scale-110' : 'bg-white border-2 border-gray-300 hover:border-rose-200 hover:bg-rose-50' } ${currentStep === step ? 'ring-4 ring-rose-100' : ''}`}>
+                                <button onClick={() => setCurrentStep(step)} className={`relative flex items-center justify-center w-6 h-6 rounded-full transition-all duration-300 cursor-pointer ${ currentStep >= step ? 'bg-gradient-to-br from-rose-500 to-rose-600 shadow-lg shadow-rose-100 hover:shadow-rose-200 scale-110' : 'bg-white border-2 border-gray-300 hover:border-rose-200 hover:bg-rose-50' } ${currentStep === step ? 'ring-4 ring-rose-100' : ''}`}>
                                     {currentStep > step ? (
                                         <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7"/>
@@ -75,59 +183,8 @@ export default function BloodRequestForm({ isModalOpen, setIsModalOpen }: any) {
                     </div>
                 </div>
 
+                {currentStep === 1 ? (<PersonalInformationForm formData={formData} handleAttendantChange={handleAttendantChange} addAttendant={addAttendant} removeAttendant={removeAttendant} />) : currentStep === 2 ? (<BloodRequirementForm />) : currentStep === 3 ? (<EmergencyDetailForm />) : currentStep === 4 ? (<ReviewForm />) : null}
 
-                <div className="block h-auto md:h-[70vh] m-4 py-5 overflow-x-scroll no-scrollbar">
-                    <div className="bg-gray-50/50 p-6 rounded-xl border border-gray-300 shadow-sm">
-                        <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                            <span className="flex items-center justify-center w-6 h-6 bg-red-100 text-red-600 rounded-full mr-2 text-sm">1</span>
-                            Personal Information
-                        </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                                <label htmlFor="patient_name" className="block text-sm font-medium text-gray-700">Patient Name <span className="text-red-500">*</span></label>
-                                <input type="text" id="patient_name" name="patient_name" className="w-full px-4 py-2 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-0 focus:ring-red-500 focus:border-red-500 outline-none transition-all" placeholder="Patient's full name"/>
-                            </div>
-                            <div className="space-y-2">
-                                <label htmlFor="patient_phone_no" className="block text-sm font-medium text-gray-700" >Phone Number</label>
-                                <input type="tel" id="patient_phone_no" name="patient_phone_no" className="w-full px-4 py-2 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-0 focus:ring-red-500 focus:border-red-500 outline-none transition-all" placeholder="Active contact number"/>
-                            </div>
-                            <div className="space-y-2">
-                                <label htmlFor="age" className="block text-sm font-medium text-gray-700">Age <span className="text-red-500">*</span></label>
-                                <input type="number" id="age" name="age" className="w-full px-4 py-2 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-0 focus:ring-red-500 focus:border-red-500 outline-none transition-all" placeholder="Patient's age"/>
-                            </div>
-                            <div className="space-y-2">
-                                <label htmlFor="gender" className="block text-sm font-medium text-gray-700">Gender <span className="text-red-500">*</span></label>
-                                <select id="gender" name="gender" className="w-full px-4 py-2.5 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-0 focus:ring-red-500 focus:border-red-500 outline-none transition-all">
-                                    <option value="">Select gender</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </div>
-                            <div className="space-y-2">
-                                <label htmlFor="guardian_name" className="block text-sm font-medium text-gray-700">Guardian Name <span className="text-red-500">*</span></label>
-                                <input type="text" id="guardian_name" name="guardian_name" className="w-full px-4 py-2 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-0 focus:ring-red-500 focus:border-red-500 outline-none transition-all" placeholder="Guardian's full name"/>
-                            </div>
-                            <div className="space-y-2">
-                                <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address <span className="text-red-500">*</span></label>
-                                <input type="text" id="address" name="address" required className="w-full px-4 py-2 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-0 focus:ring-red-500 focus:border-red-500 outline-none transition-all" placeholder="Patient's address"/>
-                            </div>
-                            <div className="space-y-2">
-                                <label htmlFor="patient_blood_group" className="block text-sm font-medium text-gray-700">Patient Blood Group <span className="text-red-500">*</span></label>
-                                <select id="patient_blood_group" name="patient_blood_group" className="w-full px-4 py-2.5 bg-white text-gray-900 border border-gray-300 rounded-lg focus:ring-0 focus:ring-red-500 focus:border-red-500 outline-none transition-all">
-                                    <option value="" className="text-gray-500">Select blood group</option>
-                                    <option value="A+" className="text-gray-900">A+ve</option>
-                                    <option value="A-" className="text-gray-900">A-ve</option>
-                                    <option value="B+" className="text-gray-900">B+ve</option>
-                                    <option value="B-" className="text-gray-900">B-ve</option>
-                                    <option value="AB+" className="text-gray-900">AB+ve</option>
-                                    <option value="AB-" className="text-gray-900">AB-ve</option>
-                                    <option value="O+" className="text-gray-900">O+ve</option>
-                                    <option value="O-" className="text-gray-900">O-ve</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     );

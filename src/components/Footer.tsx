@@ -73,9 +73,9 @@ export default function Footer() {
 
         <div className="pt-8 mt-8 border-t border-gray-800 text-center">
           <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-            <div className="bg-white p-0.5 rounded-sm inline-block">
-              <Image src="/logo.svg" alt="HHP Logo" width={60} height={40} className="object-contain object-center" style={{ filter: 'contrast(1.1)' }}/>
-            </div>
+            {/*<div className="bg-white p-0.5 rounded-sm inline-block">*/}
+            {/*  <Image src="/logo.svg" alt="HHP Logo" width={60} height={40} className="object-contain object-center" style={{ filter: 'contrast(1.1)' }}/>*/}
+            {/*</div>*/}
             <p className="text-gray-400">Made with ❤️ in Manipur, Kangleipak</p>
           </div>
           <p className="text-gray-500 text-sm mt-4">© {new Date().getFullYear()} Helping Hands for People (HHP),Manipur. All rights reserved.</p>

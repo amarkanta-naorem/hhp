@@ -1,22 +1,24 @@
+import {PatientData} from "@/utils/PatientData";
+
 export const StatusContentData = [
   {
     title: "Total Requests",
-    count: "36",
+    count: PatientData.length,
     subTitle: "Requests Received",
   },
   {
     title: "Total Donations",
-    count: "32",
+    count: PatientData.filter((patient: any): any => patient.donated_datetime !== null).length,
     subTitle: "Donations Made",
   },
   {
     title: "Total Donors",
-    count: "48",
+    count: (PatientData.length / 3).toFixed(0),
     subTitle: "Unique Donors",
   },
   {
     title: "Total Contributions",
-    count: "13",
+    count: (PatientData.length / 5).toFixed(0),
     subTitle: "Contributions Recorded",
   },
 ];

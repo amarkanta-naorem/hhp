@@ -1,4 +1,6 @@
-export default function StatusContent({title, count, subTitle}: any) {
+import React from "react";
+
+export default function StatusContent({title, count, subTitle}: any): React.ReactElement {
     return (
         <section className="group relative bg-white px-4 py-1 rounded-md shadow-xs border border-gray-200">
             <div className="flex justify-between items-center">

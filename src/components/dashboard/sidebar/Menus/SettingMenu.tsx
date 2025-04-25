@@ -1,8 +1,8 @@
 "use client";
-import Link from "next/link";
 import { Tooltip } from "react-tooltip";
+import React from "react";
 
-export default function SettingMenu({ includeLink = true }: { includeLink?: boolean }) {
+export default function SettingMenu(): React.ReactElement {
   const tooltipId = "tooltip-settings";
   const icon = (
     <section data-tooltip-id={tooltipId} data-tooltip-content="Settings">
@@ -15,11 +15,7 @@ export default function SettingMenu({ includeLink = true }: { includeLink?: bool
 
   return (
     <div>
-      {includeLink ? (
-        <Link href="/dashboard/settings" aria-label="Settings">
-          {icon}
-        </Link>
-      ) : (icon)}
+        {icon}
       <Tooltip id={tooltipId} className="!hidden md:!block shadow z-50" />
     </div>
   );
