@@ -27,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="theme-color" content="#06c1db" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
